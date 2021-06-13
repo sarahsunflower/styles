@@ -82,21 +82,27 @@
       <text macro="year"/>
     </group>
   </macro>
-  <citation>
-    <sort>
-      <key variable="citation-number"/>
-    </sort>
-    <layout prefix="[" suffix="]" delimiter=", ">
-      <group delimiter=":">
-        <text variable="citation-number"/>
-        <text variable="locator"/>
-      </group>
-    </layout>
-  </citation>
+    <macro name="citation-locator">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page">
+          <label variable="locator" form="short"/>
+        </if>
+        <else>
+          <label variable="locator" form="short" text-case="capitalize-first"/>
+        </else>
+      </choose>
+      <text variable="locator"/>
+    </group>
+  </macro>
+  
+
+
+  <!-- Bibliography -->  
   <bibliography et-al-min="7" et-al-use-first="3" entry-spacing="1">
     <sort>
-      <key macro="author"/>
-      <key variable="issued"/>
+      <key macro="citation-locator"/>
+      <key variable="citation-number"/>
     </sort>
     <layout>
       <text variable="citation-number" prefix="[" suffix="] "/>
