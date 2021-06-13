@@ -82,6 +82,19 @@
       <text macro="year"/>
     </group>
   </macro>
+  <macro name="citation-locator">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page">
+          <label variable="locator" form="short"/>
+        </if>
+        <else>
+          <label variable="locator" form="short" text-case="capitalize-first"/>
+        </else>
+      </choose>
+      <text variable="locator"/>
+    </group>
+  </macro>
   <citation>
     <sort>
       <key variable="citation-number"/>
@@ -89,7 +102,7 @@
     <layout prefix="[" suffix="]" delimiter=", ">
       <group delimiter=":">
         <text variable="citation-number"/>
-        <text variable="locator"/>
+        <text macro="citation-locator"/>
       </group>
     </layout>
   </citation>
